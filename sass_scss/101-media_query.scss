@@ -1,14 +1,12 @@
-@mixin respond-medium {
-    @media (max-width: 320px) {
-        @content
+@mixin media-min($_min-width) {
+    @media screen and (min-width: $_min-width) {
+      &{ @content; }
     }
   }
 
-  h1 {
+h1 {
     font-size: 20px;
-  
-    @include respond-medium {
-      font-size: 14px;
+    @include media-min(320px){
+        font-size: 14px;
     }
-  }
-  
+}
