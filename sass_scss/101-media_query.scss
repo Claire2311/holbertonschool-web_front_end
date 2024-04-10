@@ -1,12 +1,14 @@
-@mixin media-min($_min-width) {
-    @media screen and (min-width: $_min-width) {
+/* Adapt the h1 to the size of the screen */
+@mixin media-max($_max-width) {
+    @media screen and (max-width: $_max-width) {
       &{ @content; }
     }
   }
-
-h1 {
+  
+ h1 {
     font-size: 20px;
-    @include media-min(320px){
-        font-size: 14px;
+  
+    @include media-max(320px) {
+      font-size: 14px;
     }
-}
+  }
