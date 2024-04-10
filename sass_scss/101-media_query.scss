@@ -1,0 +1,14 @@
+@mixin respond-medium {
+    @media (max-width: 320px) {
+        @content
+    }
+  }
+
+  h1 {
+    font-size: 20px;
+  
+    @include respond-medium {
+      font-size: 14px;
+    }
+  }
+  
