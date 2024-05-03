@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.box {
+    color: white;
+}
+
+.box1 {
+    background-color: rgb(45 201 108);
+}
+
+.box2 {
+    background-color: rgb(27 144 214);
+
+}
+
+.box3 {
+    background-color: rgb(45 66 85);
+    font-size: 32px;
+    height: 4rem;
+}
+
+.box4 {
+    background-color: rgb(140 84 170);
+}
+
+.box5 {
+    background-color: rgb(230 114 28);
+}
+
+.box2, .box4 {
+    font-size: 24px;
+    height: 3rem;
+}
+
+.box1, .box5{
+    height: 2rem;
+}
