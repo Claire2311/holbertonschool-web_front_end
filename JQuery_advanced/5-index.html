@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8" />
-    <title>Task 4</title>
+    <title>Task 5</title>
   </head>
 
   <script
@@ -20,28 +20,33 @@
               $("<th>").text("Lastname")
             )
           ),
-          $("<tbody>").append(
-            $("<tr>").append(
-              $("<td>").text("Guillaume"),
-              $("<td>").text("Salva")
-            ),
-            $("<tr>").append(
-              $("<td>").text("Paulette"),
-              $("<td>").text("Salva")
-            ),
-            $("<tr>").append($("<td>").text("Antoine"), $("<td>").text("Salva"))
-          )
+          $("<tbody>")
         )
       );
     }
 
-    function replaceFamilyTree() {
-      $("tbody").html("<tr><td>Gerard</td><td>Bonissa</td></tr>");
+    function addNewMember(firstname, lastname) {
+      $("tbody").append(
+        $("<tr>").append(
+          $("<td>").text(firstname),
+          $("<td>").text(lastname),
+          $("<td>")
+            .text("(x)")
+            .css("background-color", "orange")
+            .click(function () {
+              $(this).parent().remove();
+            })
+        )
+      );
     }
 
     $(document).ready(function () {
       createFamilyTree();
-      replaceFamilyTree();
+      addNewMember("Guillaume", "Salva");
+      addNewMember("Arielle", "Snizt");
+      addNewMember("Fanette", "Snizt");
+      addNewMember("Gerard", "Snizt");
+      addNewMember("Victor", "Salva");
     });
   </script>
   <body></body>
