@@ -1,0 +1,64 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "title": "Harry Potter and the Philosopher's Stone",
+      "author": "J. K. Rowling",
+      "id": 2
+    },
+    {
+      "title": "The Lord of the Rings",
+      "author": "J. R. R. Tolkien",
+      "id": 3
+    },
+    {
+      "title": "Dune",
+      "author": "Franck Herbert",
+      "id": 4
+    },
+    {
+      "title": "Murder on the Orient Express",
+      "author": "Agatha Christie",
+      "id": 5
+    },
+    {
+      "title": "Sapiens: A Brief History of Humankind",
+      "author": "Yuval Noah Harari",
+      "id": 6
+    },
+    {
+      "title": "The Golden Notebook",
+      "author": "Doris Lessing",
+      "id": 7
+    },
+    {
+      "title": "The Mists of Avalon",
+      "author": "Marion Zimmer Bradley",
+      "id": 8
+    },
+    {
+      "title": "Little Women",
+      "author": "Louisa May Alcott",
+      "id": 9
+    },
+    {
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "id": 10
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "Great book",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "Claire"
+  }
+}
