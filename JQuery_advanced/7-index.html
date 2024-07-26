@@ -37,14 +37,18 @@
     }
 
     function queryWikipedia(search) {
-      const url =
-        "https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=" +
-        search +
-        "&utf8=&format=json&origin=*";
+      const url = "https://en.wikipedia.org/w/api.php?";
 
       $(document).ready(function () {
         $.ajax({
           url: url,
+          data: {
+            action: "query",
+            list: "search",
+            srsearch: search,
+            format: "json",
+            origin: "*",
+          },
           method: "GET",
           dataType: "json",
           crossDomain: true,
