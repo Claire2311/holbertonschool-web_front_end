@@ -22,7 +22,6 @@
 
       $("form").on("submit", function (event) {
         event.preventDefault();
-        console.log("valeur de l'input", $("input").first().val());
         queryWikipedia($("input").first().val());
       });
     }
@@ -54,7 +53,6 @@
           crossDomain: true,
         }).done(function (response) {
           let data = response.query.search;
-          console.log(data);
           for (let i = 0; i < data.length; i++) {
             addNewArticle(data[i].pageid, data[i].title, data[i].snippet);
           }
