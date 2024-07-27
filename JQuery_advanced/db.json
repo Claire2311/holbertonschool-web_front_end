@@ -1,59 +1,64 @@
 {
   "posts": [
     {
-      "id": 1,
+      "id": "1",
       "title": "json-server",
       "author": "typicode"
     },
     {
       "title": "Harry Potter and the Philosopher's Stone",
       "author": "J. K. Rowling",
-      "id": 2
+      "id": "2"
     },
     {
       "title": "The Lord of the Rings",
       "author": "J. R. R. Tolkien",
-      "id": 3
+      "id": "3"
     },
     {
       "title": "Dune",
       "author": "Franck Herbert",
-      "id": 4
+      "id": "4"
     },
     {
       "title": "Murder on the Orient Express",
       "author": "Agatha Christie",
-      "id": 5
+      "id": "5"
     },
     {
       "title": "Sapiens: A Brief History of Humankind",
       "author": "Yuval Noah Harari",
-      "id": 6
+      "id": "6"
     },
     {
       "title": "The Golden Notebook",
       "author": "Doris Lessing",
-      "id": 7
+      "id": "7"
     },
     {
       "title": "The Mists of Avalon",
       "author": "Marion Zimmer Bradley",
-      "id": 8
+      "id": "8"
     },
     {
       "title": "Little Women",
       "author": "Louisa May Alcott",
-      "id": 9
+      "id": "9"
     },
     {
       "title": "Pride and Prejudice",
       "author": "Jane Austen",
-      "id": 10
+      "id": "10"
+    },
+    {
+      "id": "99a2",
+      "title": "J. K. Rowling",
+      "author": "Harry Potter and the chamber of secrets"
     }
   ],
   "comments": [
     {
-      "id": 1,
+      "id": "1",
       "body": "Great book",
       "postId": 1
     }
