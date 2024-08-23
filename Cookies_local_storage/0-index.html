@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create basic cookie</title>
+  </head>
+  <body>
+    <h1>Login to the website</h1>
+    <input type="text" name="username" id="firstname" placeholder="Firstname" />
+    <input type="text" name="password" id="email" placeholder="Email" />
+    <button type="button" id="logMe">Log me in</button>
+    <h1>Cookies</h1>
+    <button type="button" id="showCookies">Show the cookies</button>
+    <script>
+      // create/update cookies
+      const setCookies = (firstname, email) => {
+        document.cookie =
+          "firstname=" +
+          firstname +
+          ";path=/ ;Max-Age=2592000; SameSite=Strict";
+        document.cookie =
+          "email=" + email + ";path=/ ;Max-Age=2592000; SameSite=Strict";
+      };
+
+      // get the value of each cookie
+      const getCookie = (cname) => {
+        let name = cname + "=";
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(";");
+        for (let i = 0; i < ca.length; i++) {
+          let c = ca[i];
+          while (c.charAt(0) == " ") {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return null;
+      };
+
+      // display the cookies
+      const showCookies = () => {
+        let firstname = getCookie("firstname");
+        if (firstname == null) {
+          firstname = "";
+        }
+        if (firstname != "") {
+          firstname = "firstname= " + firstname;
+        }
+        let email = getCookie("email");
+        if (email == null) {
+          email = "";
+        }
+        if (email != "") {
+          email = "email= " + email;
+        }
+        const newElemP = document.createElement("p");
+        newElemP.innerHTML = "Cookies: " + firstname + " & " + email;
+        document.body.append(newElemP);
+      };
+
+      const loginButton = document.querySelector("#logMe");
+      loginButton.addEventListener("click", function () {
+        const firstname = document.getElementById("firstname").value;
+        const email = document.getElementById("email").value;
+        setCookies(firstname, email);
+      });
+
+      const showCookiesButton = document.querySelector("#showCookies");
+      showCookiesButton.addEventListener("click", function () {
+        showCookies();
+      });
+    </script>
+  </body>
+</html>
