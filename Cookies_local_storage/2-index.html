@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Task 1</title>
+    <title>Task 2</title>
   </head>
   <body>
     <h1>Login to the website</h1>
@@ -56,17 +56,17 @@
           firstname = "";
         }
         if (firstname != "") {
-          firstname = "firstname= " + firstname;
+          firstname = firstname;
         }
         let email = getCookie("email");
         if (email == null) {
           email = "";
         }
         if (email != "") {
-          email = "email= " + email;
+          email = email;
         }
         const newElemP = document.createElement("p");
-        newElemP.innerHTML = "Cookies: " + firstname + " & " + email;
+        newElemP.innerHTML = "Email: " + email + " - Firstname: " + firstname;
         document.body.append(newElemP);
       };
 
