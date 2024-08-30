@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task 7</title>
+  </head>
+  <body>
+    <script>
+      const availableItems = ["Shampoo", "Soap", "Sponge", "Water"];
+
+      if (typeof Storage !== "undefined") {
+        createStore();
+        displayCart();
+      } else {
+        alert(
+          "Sorry, your browser does not support Web storage. Try again with a better one"
+        );
+      }
+
+      //get the cart from the session storage and transform it into an object
+      function getCartFromStorage() {
+        const cartInStorage = sessionStorage.getItem("cart");
+        if (!cartInStorage) {
+          return {};
+        } else {
+          return JSON.parse(cartInStorage);
+        }
+      }
+
+      function addItemToCart(item) {
+        const cart = getCartFromStorage();
+        if (cart[item]) {
+          cart[item] += 1;
+        } else {
+          cart[item] = 1;
+        }
+        sessionStorage.setItem("cart", JSON.stringify(cart));
+        displayCart();
+      }
+
+      function removeItemfromCart(item) {
+        const cart = getCartFromStorage();
+        delete cart[item];
+        sessionStorage.setItem("cart", JSON.stringify(cart));
+        document.getElementById(item + "-inCard").remove();
+        displayCart();
+      }
+
+      function clearCart() {
+        document.getElementById("clearCartButton").remove();
+        sessionStorage.clear();
+        displayCart();
+      }
+
+      function createStore() {
+        const title = document.createElement("h2");
+        title.textContent = "Available products:";
+        document.body.append(title);
+
+        const productsList = document.createElement("ul");
+        document.body.append(productsList);
+
+        for (let i = 0; i < availableItems.length; i++) {
+          let item = document.createElement("li");
+          item.innerText = availableItems[i];
+          item.setAttribute("id", availableItems[i]);
+          item.addEventListener("click", function () {
+            addItemToCart(item.id);
+          });
+          productsList.append(item);
+        }
+      }
+
+      function displayCart() {
+        const title = document.createElement("h2");
+        title.textContent = "Your cart:";
+        title.setAttribute("id", "cartTitle");
+        if (!document.getElementById("cartTitle")) {
+          document.body.append(title);
+        }
+
+        const tag = document.createElement("div");
+        tag.setAttribute("id", "tag");
+        title.append(tag);
+
+        updateCart();
+      }
+
+      function updateCart() {
+        const list = document.createElement("ul");
+        list.setAttribute("id", "listedProductInCart");
+        if (!document.getElementById("listedProductInCart")) {
+          document.getElementById("tag").append(list);
+        }
+
+        const cart = getCartFromStorage();
+        const productInCart = Object.keys(cart);
+
+        if (Object.keys(cart).length === 0) {
+          const liParag = document.createElement("li");
+          liParag.setAttribute("id", "emptyCart");
+          liParag.textContent = "Your cart is empty";
+          document.getElementById("listedProductInCart").append(liParag);
+          if (document.getElementById("clearCartButton")) {
+            document.getElementById("clearCartButton").remove();
+          }
+        } else {
+          if (document.getElementById("emptyCart")) {
+            document.getElementById("emptyCart").remove();
+          }
+
+          const clearCartButton = document.createElement("li");
+          clearCartButton.setAttribute("id", "clearCartButton");
+          clearCartButton.textContent = "Clear my cart";
+          if (!document.getElementById("clearCartButton")) {
+            document
+              .getElementById("listedProductInCart")
+              .append(clearCartButton);
+            clearCartButton.addEventListener("click", function () {
+              clearCart();
+            });
+          }
+
+          for (let i = 0; i < productInCart.length; i++) {
+            const nameOfProduct = productInCart[i];
+            const numberOfProduct = cart[productInCart[i]];
+            if (!document.getElementById(nameOfProduct + "-inCard")) {
+              const displayProductInCart = document.createElement("li");
+              displayProductInCart.setAttribute(
+                "id",
+                nameOfProduct + "-inCard"
+              );
+
+              displayProductInCart.innerHTML =
+                nameOfProduct + " x " + numberOfProduct;
+
+              document
+                .getElementById("listedProductInCart")
+                .append(displayProductInCart);
+            } else {
+              document.getElementById(nameOfProduct + "-inCard").innerHTML =
+                nameOfProduct + " x " + numberOfProduct;
+            }
+
+            const removeButton = document.createElement("span");
+            removeButton.textContent = "(remove)";
+            document
+              .getElementById(nameOfProduct + "-inCard")
+              .append(removeButton);
+            removeButton.addEventListener("click", function () {
+              removeItemfromCart(nameOfProduct);
+            });
+          }
+        }
+      }
+    </script>
+  </body>
+</html>
