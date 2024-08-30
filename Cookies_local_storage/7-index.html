@@ -80,19 +80,24 @@
           document.body.append(title);
         }
 
-        const tag = document.createElement("div");
-        tag.setAttribute("id", "tag");
-        title.append(tag);
+        if (document.getElementById("tag")) {
+          const listToRemove = document.getElementById("listedProductInCart");
 
+          while (listToRemove.hasChildNodes()) {
+            listToRemove.removeChild(listToRemove.firstChild);
+          }
+        } else {
+          const tag = document.createElement("div");
+          tag.setAttribute("id", "tag");
+          title.append(tag);
+        }
         updateCart();
       }
 
       function updateCart() {
         const list = document.createElement("ul");
         list.setAttribute("id", "listedProductInCart");
-        if (!document.getElementById("listedProductInCart")) {
-          document.getElementById("tag").append(list);
-        }
+        document.getElementById("tag").append(list);
 
         const cart = getCartFromStorage();
         const productInCart = Object.keys(cart);
@@ -125,23 +130,14 @@
           for (let i = 0; i < productInCart.length; i++) {
             const nameOfProduct = productInCart[i];
             const numberOfProduct = cart[productInCart[i]];
-            if (!document.getElementById(nameOfProduct + "-inCard")) {
-              const displayProductInCart = document.createElement("li");
-              displayProductInCart.setAttribute(
-                "id",
-                nameOfProduct + "-inCard"
-              );
 
-              displayProductInCart.innerHTML =
-                nameOfProduct + " x " + numberOfProduct;
-
-              document
-                .getElementById("listedProductInCart")
-                .append(displayProductInCart);
-            } else {
-              document.getElementById(nameOfProduct + "-inCard").innerHTML =
-                nameOfProduct + " x " + numberOfProduct;
-            }
+            const displayProductInCart = document.createElement("li");
+            displayProductInCart.setAttribute("id", nameOfProduct + "-inCard");
+            displayProductInCart.innerHTML =
+              nameOfProduct + " x " + numberOfProduct;
+            document
+              .getElementById("listedProductInCart")
+              .append(displayProductInCart);
 
             const removeButton = document.createElement("span");
             removeButton.textContent = "(remove)";
